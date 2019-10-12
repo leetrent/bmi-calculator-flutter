@@ -25,27 +25,24 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: reusableCardColor,
-                    childChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
+                    childChild: IconContent(
+                        icon: Icon(
                           FontAwesomeIcons.mars,
                           size: 80.0,
                         ),
-                        SizedBox(height: 15.0),
-                        Text(
-                          'MALE',
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            color: Color(0xFF8D8E98),
-                          ),
-                        ),
-                      ],
-                    ),
+                        textValue: 'MALE'),
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: reusableCardColor),
+                  child: ReusableCard(
+                    colour: reusableCardColor,
+                    childChild: IconContent(
+                        icon: Icon(
+                          FontAwesomeIcons.venus,
+                          size: 80.0,
+                        ),
+                        textValue: 'FEMALE'),
+                  ),
                 ),
               ],
             ),
@@ -90,6 +87,29 @@ class ReusableCard extends StatelessWidget {
         color: colour,
         borderRadius: BorderRadius.circular(10.0),
       ),
+    );
+  }
+}
+
+class IconContent extends StatelessWidget {
+  IconContent({@required this.icon, @required this.textValue});
+  final Icon icon;
+  final String textValue;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        icon,
+        SizedBox(height: 15.0),
+        Text(
+          this.textValue,
+          style: TextStyle(
+            fontSize: 18.0,
+            color: Color(0xFF8D8E98),
+          ),
+        ),
+      ],
     );
   }
 }
