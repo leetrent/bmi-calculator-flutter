@@ -20,7 +20,8 @@ class _InputPageState extends State<InputPage> {
   Color maleCardColor = inactiveCardColor;
   Color femaleCardColor = inactiveCardColor;
 
-  void updateColor(GenderType gender) {
+  void updateColour(GenderType gender) {
+    print('[updateColour] => (gender): ($gender)');
     if (gender == GenderType.male) {
       maleCardColor = activeCardColor;
       femaleCardColor = inactiveCardColor;
@@ -42,20 +43,34 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(
-                    colour: activeCardColor,
-                    childChild: IconContent(
-                      iconData: FontAwesomeIcons.mars,
-                      label: 'MALE',
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColour(GenderType.male);
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: maleCardColor,
+                      childChild: IconContent(
+                        iconData: FontAwesomeIcons.mars,
+                        label: 'MALE',
+                      ),
                     ),
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(
-                    colour: activeCardColor,
-                    childChild: IconContent(
-                      iconData: FontAwesomeIcons.venus,
-                      label: 'FEMALE',
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColour(GenderType.female);
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: femaleCardColor,
+                      childChild: IconContent(
+                        iconData: FontAwesomeIcons.venus,
+                        label: 'FEMALE',
+                      ),
                     ),
                   ),
                 ),
