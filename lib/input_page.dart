@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -69,16 +70,24 @@ class _InputPageState extends State<InputPage> {
             child: ReusableCard(
               colour: kActiveCardColor,
               childChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'HEIGHT',
                     style: kLabelTextStyle,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
                       Text(
                         '180',
                         style: kNumberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
                       ),
                     ],
                   ),
